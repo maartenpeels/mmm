@@ -86,7 +86,23 @@ services:
     networks:
       - main
 
-  # overseerr:
+  overseerr:
+    image: lscr.io/linuxserver/overseerr:latest
+    container_name: overseerr
+    environment:
+      - PUID=${OVERSEERR_UID}
+      - PGID=${SHARED_GID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
+    volumes:
+      - ${CONFIG_BASE}/overseerr:/config
+      - ${DATA_BASE}:/data
+    ports:
+      - 5055:5055
+    restart: unless-stopped
+    networks:
+      - main
+
   # qbittorrent:
 
 networks:
