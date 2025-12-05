@@ -1,4 +1,4 @@
-# Maarten's Media Manager
+# Maarten's Media Manager (MMM)
 
 Setup to organize and manage media files with ease. Integrates the following tools:
 
