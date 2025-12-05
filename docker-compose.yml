@@ -52,8 +52,24 @@ services:
     networks:
       - main
 
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=${PROWLARR_UID}
+      - PGID=${SHARED_GID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
+    volumes:
+      - ${CONFIG_BASE}/prowlarr:/config
+      - ${DATA_BASE}:/data
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+    networks:
+      - main
+
   # overseerr:
-  # prowlarr:
   # bazarr:
   # qbittorrent:
 
