@@ -41,3 +41,5 @@ Setup to organize and manage media files with ease. Integrates the following too
    ```bash
    docker-compose up -d
    ```
+
+5. Follow the [Setup Guide](SETUP_GUIDE.md) to configure each service.
