@@ -13,7 +13,7 @@ services:
       - "32400:32400"
     volumes:
       - ${CONFIG_BASE}/plex:/config
-      - ${DATA_BASE}/media:/data/media
+      - ${DATA_BASE}:/data
     restart: unless-stopped
     networks:
       - main
@@ -52,6 +52,23 @@ services:
     networks:
       - main
 
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=${BAZARR_UID}
+      - PGID=${SHARED_GID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
+    volumes:
+      - ${CONFIG_BASE}/bazarr:/config
+      - ${DATA_BASE}:/data
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+    networks:
+      - main
+
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
@@ -70,7 +87,6 @@ services:
       - main
 
   # overseerr:
-  # bazarr:
   # qbittorrent:
 
 networks:

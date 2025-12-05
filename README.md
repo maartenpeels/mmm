@@ -33,7 +33,7 @@ Setup to organize and manage media files with ease. Integrates the following too
 3. Create the necessary directories for persistent storage:
 
    ```bash
-   mkdir -p config/{plex,sonarr,radarr,prowlarr} data/media/{tv,movies,torrents}
+   mkdir -p config/{plex,sonarr,radarr,prowlarr,bazarr} data/media/{tv,movies,torrents,subtitles}
    ```
 
 4. Start the services using Docker Compose:
