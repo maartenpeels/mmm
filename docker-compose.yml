@@ -4,22 +4,54 @@ services:
     container_name: plex
     environment:
       - PUID=${PLEX_UID}
-      - PGID=${PLEX_GID}
-      - TZ=${PLEX_TZ}
+      - PGID=${SHARED_GID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
       - VERSION=docker
       # - PLEX_CLAIM=optional
     ports:
       - "32400:32400"
     volumes:
       - ${CONFIG_BASE}/plex:/config
-      - ${MEDIA_BASE}/tv:/tv
-      - ${MEDIA_BASE}/movies:/movies
+      - ${DATA_BASE}/media:/data/media
     restart: unless-stopped
     networks:
       - main
 
-  # sonarr:
-  # radarr:
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=${SONARR_UID}
+      - PGID=${SHARED_GID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
+    volumes:
+      - ${CONFIG_BASE}/sonarr:/config
+      - ${DATA_BASE}:/data
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+    networks:
+      - main
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=${RADARR_UID}
+      - PGID=${SHARED_GID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
+    volumes:
+      - ${CONFIG_BASE}/radarr:/config
+      - ${DATA_BASE}:/data
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+    networks:
+      - main
+
   # overseerr:
   # prowlarr:
   # bazarr:
