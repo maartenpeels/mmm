@@ -2,7 +2,7 @@
 
 Setup to organize and manage media files with ease. Integrates the following tools:
 
-- [Plex](https://www.plex.tv/) for media streaming.
+- [Jellyfin](https://jellyfin.org/) for media streaming.
 - [Sonarr](https://sonarr.tv/) for TV show management.
 - [Radarr](https://radarr.video/) for movie management.
 - [Overseerr](https://overseerr.dev/) for media request handling.
@@ -33,7 +33,7 @@ Setup to organize and manage media files with ease. Integrates the following too
 3. Create the necessary directories for persistent storage:
 
    ```bash
-   mkdir -p config/{plex,sonarr,radarr,prowlarr,bazarr,overseerr,qbittorrent} data/media/{tv,movies,torrents,subtitles}
+   mkdir -p config/{jellyfin,sonarr,radarr,prowlarr,bazarr,overseerr,qbittorrent} data/media/{tv,movies,torrents,subtitles}
    ```
 
 4. Start the services using Docker Compose:

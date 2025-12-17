@@ -1,19 +1,18 @@
 services:
-  plex:
-    image: lscr.io/linuxserver/plex:latest
-    container_name: plex
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
     environment:
-      - PUID=${PLEX_UID}
+      - PUID=${JELLYFIN_UID}
       - PGID=${SHARED_GID}
-      - UMASK=${UMASK}
       - TZ=${TZ}
-      - VERSION=docker
-      # - PLEX_CLAIM=optional
-    ports:
-      - "32400:32400"
     volumes:
-      - ${CONFIG_BASE}/plex:/config
+      - ${CONFIG_BASE}/jellyfin:/config
       - ${DATA_BASE}:/data
+    ports:
+      - 8096:8096
+      - 7359:7359/udp
+      - 1900:1900/udp
     restart: unless-stopped
     networks:
       - main
@@ -121,6 +120,8 @@ services:
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
+    networks:
+      - main
 
 networks:
   main:
