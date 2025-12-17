@@ -114,7 +114,7 @@ services:
       - TORRENTING_PORT=6881
     volumes:
       - ${CONFIG_BASE}/qbittorrent:/config
-      - ${DATA_BASE}:/downloads
+      - ${DATA_BASE}/downloads:/downloads
     ports:
       - 8080:8080
       - 6881:6881
