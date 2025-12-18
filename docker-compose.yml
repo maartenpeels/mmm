@@ -102,22 +102,6 @@ services:
     networks:
       - main
 
-  overcrawlrr:
-    image: ghcr.io/psyko-gh/overcrawlrr:latest
-    container_name: overcrawlrr
-    environment:
-      - PUID=${OVERCRAWLRR_UID}
-      - PGID=${SHARED_GID}
-      - UMASK=${UMASK}
-      - TZ=${TZ}
-    volumes:
-      - ${CONFIG_BASE}/overcrawlrr:/config
-    ports:
-      - 5056:5056
-    restart: unless-stopped
-    networks:
-      - main
-
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent

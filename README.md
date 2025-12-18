@@ -8,7 +8,6 @@ Setup to organize and manage media files with ease. Integrates the following too
 - [Overseerr](https://overseerr.dev/) for media request handling.
 - [Prowlarr](https://prowlarr.com/) for indexer management.
 - [Bazarr](https://www.bazarr.media/) for subtitle management.
-- [Overcrawlrr](https://github.com/psyko-gh/overcrawlrr) for automatic media requests.
 - [qBittorrent](https://www.qbittorrent.org/) for torrent downloading
 
 ## Prerequisites
