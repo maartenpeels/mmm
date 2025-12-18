@@ -1,0 +1,60 @@
+config:
+  overseerr:
+    apiUrl: http://overseerr:5055/api/v1
+    user: ""
+    password: ""
+    dryRun: true
+  discovery:
+    cron: "? 30 3 * * *"
+    streams:
+      - upcoming
+      - popular
+      - trending
+    ruleset: Space Sci-Fi
+  rulesets:
+    - name: Space Sci-Fi
+      rules:
+        - name: Reject adult content
+          whenMatch:
+            - adult: yes
+          action: reject
+
+        - name: Reject unreleased movies
+          whenMatch:
+            - released: no
+          action: reject
+
+        - name: Reject non-english movies
+          whenMatch:
+            - not:
+                - originalLanguage: en
+          action: reject
+
+        - name: Reject low-rated movies
+          whenMatch:
+            - score: below 7
+          action: reject
+
+        - name: Reject non-preferred genres
+          whenMatch:
+            - or:
+                - genre: horreur
+                - genre: animation
+          action: reject
+
+        - name: Accept preferred genres
+          whenMatch:
+            - or:
+                - genre: science-fiction
+                - genre: adventure
+                - genre: action
+                - genre: comedy
+          action: accept
+
+        - name: Accept space keywords
+          whenMatch:
+            - keyword:
+                - space
+                - outer space
+                - spaceship
+          action: accept
