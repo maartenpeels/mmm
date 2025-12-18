@@ -1,6 +1,6 @@
 # Media Server Setup Guide
 
-Complete guide for configuring your Plex media server stack with Sonarr, Radarr, Prowlarr, Bazarr, Overseerr, and qBittorrent.
+Complete guide for configuring your Jellyfin media server stack with Sonarr, Radarr, Prowlarr, Bazarr, Overseerr, and qBittorrent.
 
 ## 1. qBittorrent Configuration
 
@@ -274,14 +274,7 @@ For each provider:
    - Log in with Plex credentials
    - Grant Overseerr access
 
-2. **Plex Configuration:**
-
-   - Your Plex servers will be listed
-   - Select your server
-   - Select libraries to scan (Movies, TV Shows)
-   - **Save Changes** → **Continue**
-
-3. **Radarr Configuration:**
+2. **Radarr Configuration:**
 
    - **Add Radarr Server**
    - **Default Server**: `yes`
@@ -300,7 +293,7 @@ For each provider:
    - **Enable Automatic Search:** Yes
    - **Test** → **Save**
 
-4. **Sonarr Configuration:**
+3. **Sonarr Configuration:**
    - **Add Sonarr Server**
    - **Default Server**: `yes`
    - **Server Name:** Sonarr
@@ -334,13 +327,29 @@ For each provider:
   - Auto-Approve Series (optional)
 
 ## 7. Jellyfin Media Server Configuration
-TODO...
 
+**Access:** <http://localhost:8096>
+
+### Initial Setup Wizard
+
+1. **Create Admin User:**
+
+   - Username: `admin`
+   - Password: (set a strong password)
+   
+2. **Media Libraries:**
+    - Add Library: Movies
+      - Folder: `/data/media/movies`
+    - Add Library: TV Shows
+      - Folder: `/data/media/tv`
+
+3. **Finish Setup**
+ 
 ## Service URLs & Default Ports
 
 | Service     | URL                      | Default Port | Purpose             |
 | ----------- | ------------------------ | ------------ | ------------------- |
-| Plex        | <http://localhost:32400> | 32400        | Media Server        |
+| Jellyfin    | <http://localhost:8096>  | 8096         | Media Server        |
 | Sonarr      | <http://localhost:8989>  | 8989         | TV Show Management  |
 | Radarr      | <http://localhost:7878>  | 7878         | Movie Management    |
 | Bazarr      | <http://localhost:6767>  | 6767         | Subtitle Management |
