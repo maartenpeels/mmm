@@ -102,7 +102,7 @@ services:
       - main
 
   janitorr:
-    image: ghcr.io/schaka/janitorr:latest
+    image: ghcr.io/schaka/janitorr:jvm-amd64
     container_name: janitorr
     environment:
       - PUID=${JANITORR_UID}
