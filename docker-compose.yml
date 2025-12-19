@@ -85,36 +85,18 @@ services:
     networks:
       - main
 
-  overseerr:
-    image: lscr.io/linuxserver/overseerr:latest
-    container_name: overseerr
+  jellyseerr:
+    image: ghcr.io/fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
     environment:
-      - PUID=${OVERSEERR_UID}
+      - PUID=${JELLYSEERR_UID}
       - PGID=${SHARED_GID}
       - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
-      - ${CONFIG_BASE}/overseerr:/config
-      - ${DATA_BASE}:/data
+      - ${CONFIG_BASE}/jellyseerr:/app/config
     ports:
       - 5055:5055
-    restart: unless-stopped
-    networks:
-      - main
-
-  maintainerr:
-    image: ghcr.io/jorenn92/maintainerr:latest
-    container_name: maintainerr
-    environment:
-      - PUID=${MAINTAINERR_UID}
-      - PGID=${SHARED_GID}
-      - UMASK=${UMASK}
-      - TZ=${TZ}
-    volumes:
-      - ${CONFIG_BASE}/maintainerr:/opt/data
-    ports:
-      - 1000:1000
-      - 6246:6246
     restart: unless-stopped
     networks:
       - main
