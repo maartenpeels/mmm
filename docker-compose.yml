@@ -101,6 +101,21 @@ services:
     networks:
       - main
 
+  janitorr:
+    image: ghcr.io/schaka/janitorr:latest
+    container_name: janitorr
+    environment:
+      - PUID=${JANITORR_UID}
+      - PGID=${SHARED_GID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
+    volumes:
+      - ${CONFIG_BASE}/janitorr:/config
+      - ${DATA_BASE}:/data
+    restart: unless-stopped
+    networks:
+      - main
+
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
