@@ -107,7 +107,6 @@ services:
     container_name: jellystat-db
     restart: unless-stopped
     environment:
-      - PUID=${POSTGRES_UID}
       - PGID=${SHARED_GID}
       - UMASK=${UMASK}
       - TZ=${TZ}
