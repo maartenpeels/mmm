@@ -32,7 +32,7 @@ application:
       # Percentage of free disk space to expiration time - if the highest given number is not reached, nothing will be deleted
       # If filesystem access is not given, disk percentage can't be determined. As a result, Janitorr will always choose the largest expiration time.
       5: 15d # 15 days
-      20: 30d # 1 month - if a movie's files on your system are older than this, they will be deleted
+      10: 30d # 1 month - if a movie's files on your system are older than this, they will be deleted
       15: 60d # 2 months
       20: 90d # 3 months
     season-expiration:
@@ -40,6 +40,22 @@ application:
       10: 20d # 20 days - if a season's files on your system are older than this, they will be deleted
       15: 60d # 2 months
       20: 120d # 4 months
+
+  tag-based-deletion:
+    enabled: false
+    minimum-free-disk-percent: 100
+    schedules:
+      - tag: 5 - demo
+        expiration: 30d
+      - tag: 10 - demo
+        expiration: 7d
+
+  episode-deletion: # This ignores Jellystat. Only grab history matters. It also doesn't clean up Jellyfi>
+    enabled: false
+    clean-older-seasons: false # If enabled, all seasons but the latest will be entirely deleted (regardl>
+    tag: janitorr_daily # Shows tagged with this will have all episodes of their LATEST season deleted by>
+    max-episodes: 10 # maximum (latest) episodes of this season to keep
+    max-age: 30d # Maximum age to keep any episode at all - even the last 10 episodes would expire after >
 
 clients:
   sonarr:
