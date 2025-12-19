@@ -101,6 +101,46 @@ services:
     networks:
       - main
 
+  jellystat-db:
+    image: "postgres:15.2"
+    shm_size: 1gb
+    container_name: jellystat-db
+    restart: unless-stopped
+    environment:
+      - PUID=${POSTGRES_UID}
+      - PGID=${SHARED_GID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mypassword
+    volumes:
+      - ${CONFIG_BASE}/postgres:/var/lib/postgresql/data
+    networks:
+      - main
+
+  jellystat:
+    image: "cyfershepard/jellystat:latest"
+    container_name: jellystat
+    restart: unless-stopped
+    environment:
+      - PUID=${JELLYSTAT_UID}
+      - PGID=${SHARED_GID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_IP=jellystat-db
+      - POSTGRES_PORT=5432
+      - JWT_SECRET=my-secret-jwt-key
+    volumes:
+      - ${CONFIG_BASE}/jellystat:/app/backend/backup-data
+    ports:
+      - "3000:3000"
+    depends_on:
+      - jellystat-db
+    networks:
+      - main
+
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
