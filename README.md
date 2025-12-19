@@ -42,4 +42,4 @@ Setup to organize and manage media files with ease. Integrates the following too
    docker-compose up -d
    ```
 
-5. Follow the [Setup Guide](SETUP_GUIDE.md) to configure each service.
+5. Access the web interfaces of each service via your web browser to complete their individual setups.
