@@ -9,6 +9,10 @@ services:
     volumes:
       - ${CONFIG_BASE}/jellyfin:/config
       - ${DATA_BASE}:/data
+    # Enable hardware acceleration for Ugreen NAS
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/dri/card0:/dev/dri/card0
     ports:
       - 8096:8096
       - 7359:7359/udp
