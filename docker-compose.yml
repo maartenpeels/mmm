@@ -132,6 +132,23 @@ services:
     networks:
       - main
 
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=${SABNZBD_UID}
+      - PGID=${SHARED_GID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
+    volumes:
+      - ${CONFIG_BASE}/sabnzbd:/config
+      - ${DATA_BASE}/downloads:/downloads
+    ports:
+      - 8082:8080
+    restart: unless-stopped
+    networks:
+      - main
+
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent

@@ -8,8 +8,10 @@ Setup to organize and manage media files with ease. Integrates the following too
 - [Radarr](https://radarr.video/) for movie management.
 - [Prowlarr](https://prowlarr.com/) for indexer management.
 - [Bazarr](https://www.bazarr.media/) for subtitle management.
-- [qBittorrent](https://www.qbittorrent.org/) for torrent downloading
+- [qBittorrent](https://www.qbittorrent.org/) for torrent downloading.
+- [SABnzbd](https://sabnzbd.org/) for usenet downloading.
 - [Janitorr](https://github.com/Schaka/janitorr) for media file organization and cleanup.
+- [FlareSolverr](https://github.com/FlareSolverr/FlareSolverr) for bypassing Cloudflare protection on indexers.
 
 ## Prerequisites
 
